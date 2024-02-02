@@ -4,7 +4,6 @@
 
 @using HairSalon.Models;
 <h3>@ViewBag.PageTitle</h3>
-
 @if (@Model.Count == 0)
 {
   <p>No stylists have been added yet. Please add a stylist by clicking on the button below.</p>
@@ -14,11 +13,11 @@ else
   <div class="stylistsList">
     @foreach (Stylist s in Model)
     {
-      <div class="stylistsListItem">@s.StylistName</div>
+      <div class="stylistsListItem">@Html.ActionLink(s.StylistName, "Details", new { id = s.StylistId})</div>
     }
   </div>
 }
-
+<br /><br />
 <button>@Html.ActionLink("Add a Stylist", "Create")</button>
 
 <div class="allPageNav">
