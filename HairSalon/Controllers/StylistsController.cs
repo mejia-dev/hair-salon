@@ -1,5 +1,6 @@
 using HairSalon.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,7 +37,7 @@ namespace HairSalon.Controllers
 
     public ActionResult Details(int id)
     {
-      Stylist selected = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      Stylist selected = _db.Stylists.Include(stylist => stylist.Clients).FirstOrDefault(stylist => stylist.StylistId == id);
       ViewBag.PageTitle = $"Stylist Details - {selected.StylistName}";
       return View(selected);
     }

@@ -3,6 +3,7 @@
 }
 
 @model HairSalon.Models.Stylist
+@using HairSalon.Models;
 
 <h3>@ViewBag.PageTitle</h3>
 <hr />
@@ -17,6 +18,26 @@
     else
     {
       <span>No details for this stylist. Use the "Edit Stylist" button to add details.</span>
+    }
+  </p>
+  <p><strong>Clients:</strong>
+    @if (@Model.Clients.Count == 0)
+    {
+    <span> This stylist hasn't been assigned any clients yet. @Html.ActionLink($"Add one now!", "Create", "Clients")</span>
+
+    }
+    else
+    {
+    <span>
+    <div class="stylistDetailsPageClientList">
+        @foreach (Client client in Model.Clients)
+        {
+        <div class="stylistDetailsPageClientListItem">
+          <p>@Html.ActionLink($"{client.ClientName}", "Details", "Clients", new { id = client.ClientId })</p>
+        </div>
+        }
+    </div>
+    </span>
     }
   </p>
 </div>
