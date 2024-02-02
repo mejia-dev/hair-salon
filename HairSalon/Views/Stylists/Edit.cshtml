@@ -1,0 +1,31 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Stylist
+
+<h3>@ViewBag.PageTitle</h3>
+
+@using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.StylistId)
+    <p>
+      Stylist Name<span class="required-field-style-red">*</span>
+      <br />
+      @Html.TextBoxFor(model => model.StylistName, new {@required = "required"})
+    </p>
+    <p>
+      Stylist Details
+      <br />
+      @Html.TextBoxFor(model => model.StylistDetails)
+    </p>
+    <br />
+    <input type="submit" value="Save Changes" /><br />
+    @Html.ActionLink("Discard Changes", "Details", new { id = @Model.StylistId})
+  }
+<div class="allPageNav">
+  <br /><br />
+  <button>@Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId})</button>
+  <br />
+  <button>@Html.ActionLink("Back to All Stylists", "Index")</button>
+</div>
