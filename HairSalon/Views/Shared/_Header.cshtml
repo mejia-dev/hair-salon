@@ -1,5 +1,12 @@
 <div id="header">
-<br>
+  <br>
   <h2>Eau Claire's Salon</h2>
-  <button>@Html.ActionLink("Home", "Index", "Home")</button>
+  <div id="headerNavButtons">
+    <button>@Html.ActionLink("Home", "Index", "Home")</button>
+    @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+    {
+      <input type="text" name="query" placeholder="Search stylists or clients"/>
+      <input type="submit" value="Search" />
+    }
+  </div>
 </div>
