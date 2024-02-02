@@ -8,8 +8,8 @@
 <hr />
 
 <div class="stylistDetailsPage">
-  <p>Name: @Model.StylistName</p>
-  <p>Details:
+  <p><strong>Name:</strong> @Model.StylistName</p>
+  <p><strong>Details:</strong>
     @if (@Model.StylistDetails != null)
     {
       <span>@Model.StylistDetails</span>
@@ -23,8 +23,8 @@
 
 <div class="allPageNav">
   <br /><br />
-  <button>@Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId})</button>
-  <button>@Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId})</button>
+  <button>@Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId })</button>
+  <button>@Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId })</button>
   <br />
   <button>@Html.ActionLink("Back to All Stylists", "Index")</button>
 </div>
