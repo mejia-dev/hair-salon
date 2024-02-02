@@ -44,7 +44,7 @@ namespace HairSalon.Controllers
 
     public ActionResult Details(int id)
     {
-      Client selectedClient = _db.Clients.Include(Client => Client.Stylist).FirstOrDefault(client => client.StylistId == id);
+      Client selectedClient = _db.Clients.Include(client => client.Stylist).FirstOrDefault(client => client.ClientId == id);
       ViewBag.PageTitle = $"Client Details - {selectedClient.ClientName}";
       return View(selectedClient);
     }
