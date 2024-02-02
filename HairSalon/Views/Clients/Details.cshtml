@@ -10,16 +10,16 @@
 <div class="stylistDetailsPage">
   <p><strong>Name:</strong> @Model.ClientName</p>
   <p><strong>Details:</strong>
-    @if (@Model.ClientName != null)
+    @if (@Model.ClientDetails != null)
     {
-      <span>@Model.ClientName</span>
+      <span>@Model.ClientDetails</span>
     }
     else
     {
       <span>No details for this client. Use the "Edit Client" button to add details.</span>
     }
   </p>
-  <p>Stylist: @Html.ActionLink(Model.Stylist.StylistName, "Details", "Stylists", new { id = Model.Stylist.StylistId })</p>
+  <p><strong>Stylist:</strong> @Html.ActionLink(Model.Stylist.StylistName, "Details", "Stylists", new { id = Model.Stylist.StylistId })</p>
 </div>
 
 <div class="allPageNav">
