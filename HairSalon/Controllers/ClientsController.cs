@@ -48,5 +48,21 @@ namespace HairSalon.Controllers
       ViewBag.PageTitle = $"Client Details - {selectedClient.ClientName}";
       return View(selectedClient);
     }
+
+    public ActionResult Edit(int id)
+    {
+      Client selected = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      ViewBag.PageTitle = $"Edit Client - {selected.ClientName}";
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "StylistName");
+      return View(selected);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Client client)
+    {
+      _db.Clients.Update(client);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
