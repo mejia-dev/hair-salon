@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Stylist
+
+<h3>@ViewBag.PageTitle</h4>
+
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(model => model.StylistName)
+    <span class="required-field-style-red">*</span>
+    <br />
+    @Html.TextBoxFor(model => model.StylistName, new {@required = "required"})
+    <br /><br />
+    @Html.LabelFor(model => model.StylistDetails)
+    <br />
+    @Html.TextBoxFor(model => model.StylistDetails)
+    <br /><br />
+    <input type="submit" value="Add Stylist" />
+  }
+
+<div class="allPageNav">
+  <br /><br />
+  <button>@Html.ActionLink("Back to All Stylists", "Index")</button>
+  <button>@Html.ActionLink("Home", "Index", "Home")</button>
+</div>
