@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Stylist
+
+<h3>@ViewBag.PageTitle</h3>
+<hr />
+
+<div class="stylistDetailsPage">
+  <p>Name: @Model.StylistName</p>
+  <p>Details:
+    @if (@Model.StylistDetails != null)
+    {
+      <span>@Model.StylistDetails</span>
+    }
+    else
+    {
+      <span>No details for this stylist. Use the "Edit Stylist" button to add details.</span>
+    }
+  </p>
+</div>
+
+<div class="allPageNav">
+  <br /><br />
+  <button>@Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId})</button>
+  <button>@Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId})</button>
+  <br />
+  <button>@Html.ActionLink("Back to All Stylists", "Index")</button>
+</div>
