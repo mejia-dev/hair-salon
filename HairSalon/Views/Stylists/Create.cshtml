@@ -8,15 +8,17 @@
 
   @using (Html.BeginForm())
   {
-    @Html.LabelFor(model => model.StylistName)
-    <span class="required-field-style-red">*</span>
+    <p>
+      Stylist Name<span class="required-field-style-red">*</span>
+      <br />
+      @Html.TextBoxFor(model => model.StylistName, new {@required = "required"})
+    </p>
+    <p>
+      Stylist Details
+      <br />
+      @Html.TextBoxFor(model => model.StylistDetails)
+    </p>
     <br />
-    @Html.TextBoxFor(model => model.StylistName, new {@required = "required"})
-    <br /><br />
-    @Html.LabelFor(model => model.StylistDetails)
-    <br />
-    @Html.TextBoxFor(model => model.StylistDetails)
-    <br /><br />
     <input type="submit" value="Add Stylist" />
   }
 
