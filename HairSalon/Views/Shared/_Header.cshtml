@@ -1,8 +1,7 @@
 <div id="header">
   <br>
-  <h2>Eau Claire's Salon</h2>
+  <h2>@Html.ActionLink("Eau Claire's Salon", "Index", "Home")</h2>
   <div id="headerNavButtons">
-    <button>@Html.ActionLink("Home", "Index", "Home")</button>
     @using (Html.BeginForm("Index", "Search", FormMethod.Get))
     {
       <input type="text" name="query" placeholder="Search stylists or clients"/>
