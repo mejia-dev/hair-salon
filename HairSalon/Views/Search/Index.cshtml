@@ -5,6 +5,15 @@
 {
   <p>Your search returned no results. Please adjust your search keywords and try again.</p>
 }
+else if (@ViewBag.SearchType == "stylists")
+{
+  <div class="stylistsList">
+    @foreach (Stylist s in Model)
+    {
+      <div class="stylistsListItem">@Html.ActionLink(s.StylistName, "Details", new { id = s.StylistId })</div>
+    }
+  </div>
+} 
 else
 {
   <div class="clientsList">

@@ -17,7 +17,7 @@ namespace HairSalon.Controllers
       _db = db;
     }
 
-    private async Task<List<Client>> DoSearch(string query)
+    private async Task<List<Client>> DoClientSearch(string query)
     {
       IQueryable<Client> results = _db.Set<Client>().Include(client => client.Stylist);
 
@@ -35,11 +35,38 @@ namespace HairSalon.Controllers
       }
     }
 
+    private async Task<List<Stylist>> DoStylistSearch(string query)
+    {
+      IQueryable<Stylist> results = _db.Set<Stylist>();
+
+      if (query != null)
+      {
+        return await results?.Where(
+          stylist => stylist.StylistName.Contains(query) || 
+          stylist.StylistDetails.Contains(query)
+          ).ToListAsync();
+      }
+      else
+      {
+        return await results.ToListAsync();
+      }
+    }
+
     public async Task<IActionResult> Index(string query)
     {
-      List<Client> resultList = await DoSearch(query);
-      ViewBag.PageTitle = "Search Results";
-      return View(resultList);
+      ViewBag.PageTitle = $"Search results for {query}";
+      List<Client> clientResults = await DoClientSearch(query);
+      if (clientResults.Count == 0)
+      {
+        List<Stylist> stylistResults = await DoStylistSearch(query);
+        ViewBag.SearchType = "stylists";
+        return View(stylistResults);
+      }
+      else
+      {
+        ViewBag.SearchType = "clients";
+        return View(clientResults);
+      } 
     }
   }
 }
