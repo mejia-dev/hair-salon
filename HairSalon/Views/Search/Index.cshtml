@@ -10,7 +10,7 @@ else if (@ViewBag.SearchType == "stylists")
   <div class="stylistsList">
     @foreach (Stylist s in Model)
     {
-      <div class="stylistsListItem">@Html.ActionLink(s.StylistName, "Details", new { id = s.StylistId })</div>
+      <div class="stylistsListItem">@Html.ActionLink(s.StylistName, "Details", "Stylists", new { id = s.StylistId })</div>
     }
   </div>
 } 
@@ -21,7 +21,7 @@ else
     {
       <div class="clientsListItem">
         <p>
-          @Html.ActionLink(c.ClientName, "Details", new { id = c.ClientId })
+          @Html.ActionLink(c.ClientName, "Details", "Clients", new { id = c.ClientId })
           <em>Stylist: @Html.ActionLink(c.Stylist.StylistName, "Details", "Stylists", new { id = c.Stylist.StylistId })</em>
         </p>
       </div>
